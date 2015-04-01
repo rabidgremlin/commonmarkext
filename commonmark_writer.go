@@ -1,7 +1,6 @@
 package commonmarkext
 
 import (
-	"fmt"
 	"github.com/rhinoman/go-commonmark"
 	"log"
 )
@@ -38,8 +37,6 @@ type CommonmarkGenerator interface {
 func GenerateFromString(commonmarkString string, generator CommonmarkGenerator) string {
 	doc := commonmark.ParseDocument(commonmarkString, commonmark.CMARK_OPT_DEFAULT)
 	defer doc.Free()
-
-	fmt.Println(doc.RenderXML(commonmark.CMARK_OPT_DEFAULT))
 
 	return GenerateFromNode(doc, generator)
 }
